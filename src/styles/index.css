@@ -2,6 +2,7 @@
     text-align: center;
     background: black;
     margin: 100px;
+    margin-bottom: 35px;
 }
 .counter-display div{
     display: inline-block;
@@ -11,4 +12,8 @@
     color: white;
     padding: 10px;
     margin: 3px;
+}
+
+.button-container {
+    text-align: center;
 }
