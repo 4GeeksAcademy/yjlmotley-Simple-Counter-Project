@@ -1,7 +1,7 @@
 .counter-display {
     text-align: center;
     background: black;
-    margin: 100px 20%;
+    margin: 100px;
 }
 .counter-display div{
     display: inline-block;
