@@ -19,7 +19,9 @@ function App() {
                 if (countingUp) {
                     setCounter(prevCounter => prevCounter + 1);
                 } else {
-                    setCounter(prevCounter => prevCounter - 1);
+                    if (counter > 0) {
+                        setCounter(prevCounter => prevCounter - 1);
+                    }
                 }
             }, 1000); // Update every second
         }
@@ -53,6 +55,7 @@ function App() {
     const startCountdown = () => {
         setCounter(startNumber); // Set the counter to the starting number
         setCountingUp(false); // Start counting down
+        setIsRunning(true);
     };
 
     const handleStop = () => {
@@ -66,6 +69,7 @@ function App() {
     const handleReset = () => {
         setCounter(0);
         setCountingUp(true);
+        setIsRunning(false);
     };
 
     // useEffect(() => {
@@ -86,17 +90,17 @@ function App() {
                 tensDigit = {calculateSeconds(counter, 10)}
                 onesDigit = {calculateSeconds(counter, 1)}
             />
-            <div className="button-container">
+            <div className="button-container group1">
                 <input type="number" value={startNumber} onChange={handleInputChange} />
                 <button onClick={startCountdown}>Start Countdown</button>
                 <button onClick={toggleCountingDirection}>
                     {countingUp ? "Switch to Count Down" : "Switch to Count Up"}
                 </button>
             </div>
-            <div className="button-container">
+            <div className="button-container group2">
+                <ResetButton onReset={handleReset} />
                 <StopButton onStop={handleStop} />
                 <ResumeButton onResume={handleResume} />
-                <ResetButton onReset={handleReset} />
             </div>
         </>
     )
