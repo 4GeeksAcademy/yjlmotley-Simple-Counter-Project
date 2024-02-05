@@ -15,7 +15,6 @@ function App() {
         let interval;
         if (isRunning) {
             interval = setInterval(() => {
-                // Update counter based on counting direction
                 if (countingUp) {
                     setCounter(prevCounter => prevCounter + 1);
                 } else {
@@ -23,38 +22,27 @@ function App() {
                         setCounter(prevCounter => prevCounter - 1);
                     }
                 }
-            }, 1000); // Update every second
+            }, 1000);
+        }
+
+        if (counter === 0 && !countingUp && startNumber !== 0) {
+            alert("Time's up!");
         }
 
         return () => clearInterval(interval);
     }, [counter, countingUp, isRunning]);
 
-    //     const interval = setInterval(() => {
-    //         // Update counter based on counting direction
-    //         if (countingUp) {
-    //             setCounter(prevCounter => prevCounter + 1);
-    //         } else {
-    //             setCounter(prevCounter => prevCounter - 1);
-    //         }
-    //     }, 1000); // Update every second
-
-    //     return () => clearInterval(interval);
-    // }, [counter, countingUp]);
-
-    // Toggle counting direction
     const toggleCountingDirection = () => {
         setCountingUp(prevCountingUp => !prevCountingUp);
     };
 
-    // Handle input change for the starting number
     const handleInputChange = (event) => {
-        setStartNumber(Number(event.target.value)); // Convert input value to a number
+        setStartNumber(Number(event.target.value)); 
     };
 
-    // Handle countdown start
     const startCountdown = () => {
-        setCounter(startNumber); // Set the counter to the starting number
-        setCountingUp(false); // Start counting down
+        setCounter(startNumber); 
+        setCountingUp(false); 
         setIsRunning(true);
     };
 
@@ -72,13 +60,6 @@ function App() {
         setIsRunning(false);
     };
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setCounter(counter => counter + 1)
-    //     }, 1000)
-
-    // return () => clearInterval(interval)
-    // }, [counter]) 
 
     return (
         <>
@@ -90,14 +71,14 @@ function App() {
                 tensDigit = {calculateSeconds(counter, 10)}
                 onesDigit = {calculateSeconds(counter, 1)}
             />
-            <div className="button-container group1">
+            <div className="button-container">
                 <input type="number" value={startNumber} onChange={handleInputChange} />
                 <button onClick={startCountdown}>Start Countdown</button>
                 <button onClick={toggleCountingDirection}>
                     {countingUp ? "Switch to Count Down" : "Switch to Count Up"}
                 </button>
             </div>
-            <div className="button-container group2">
+            <div className="button-container">
                 <ResetButton onReset={handleReset} />
                 <StopButton onStop={handleStop} />
                 <ResumeButton onResume={handleResume} />

@@ -1,8 +1,9 @@
 import React from "react";
 
+
 function StopButton({ onStop }) {
     const handleStop = () => {
-        onStop(); // Call the onStop function passed from the parent component
+        onStop(); 
     };
 
     return (
@@ -12,7 +13,7 @@ function StopButton({ onStop }) {
 
 function ResumeButton({ onResume }) {
     const handleResume = () => {
-        onResume(); // Call the onResume function passed from the parent component
+        onResume(); 
     };
 
     return (
@@ -22,12 +23,13 @@ function ResumeButton({ onResume }) {
 
 function ResetButton({ onReset }) {
     const handleReset = () => {
-        onReset(); // Call the onReset function passed from the parent component
+        onReset(); 
     };
 
     return (
         <button onClick={handleReset}>Reset</button>
     );
 }
+
 
 export { StopButton, ResumeButton, ResetButton };

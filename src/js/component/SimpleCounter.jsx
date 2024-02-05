@@ -1,6 +1,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 
+
 function SimpleCounter(props) {
 
     return (
@@ -26,5 +27,6 @@ SimpleCounter.propTypes = {
     tensDigit : PropTypes.number,
     onesDigit : PropTypes.number
 }
+
 
 export default SimpleCounter
